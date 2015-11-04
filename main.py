@@ -10,7 +10,7 @@ main(args):
 	molecule = ob.readFile("xyz", mol_file)
 	print("You inputted the molecule"+ mol_file[:".xyz"] +"\n")
 	print("The structure looks like\n")
-	ob.draw(molecule)
+	#ob.draw(molecule)
 	find_eulerian()
 
 
