@@ -1,17 +1,19 @@
-
-'''
-First argument is name of file ( in xyz format)
-e.g. python main benzene.xyz
-'''
 import openbabel as ob
-main(args):
+import pybel as pb
+import sys
+import euler
+
+def main(args):
+	assert len(args) ==1
 	mol_file = args[0]
-	assert mol_file.split(".")[-1] is "xyz"
-	molecule = ob.readFile("xyz", mol_file)
-	print("You inputted the molecule"+ mol_file[:".xyz"] +"\n")
+	assert mol_file.split(".")[-1] == 'xyz'
+	molecule = pb.readfile("xyz", mol_file).next()
+	print("You inputted the molecule"+ mol_file.split(".")[0] +"\n")
 	print("The structure looks like\n")
-	#ob.draw(molecule)
-	find_eulerian()
+	eulerian_cycle= euler.find_euler(molecule)
+	assert(list != None)
+	for atom in eulerian_cycle:
+		print(atom.GetIdx())
 
 
 
