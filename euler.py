@@ -12,12 +12,15 @@ def find_euler(mol):
     mol.removeh()
     if not exists_eulerian(mol):
         print "No eulerian path exists for that"
+        return_val = [];
     else:
         #Hierholtzer's ALGORITHM  for finding Eulerian path
         obmol = mol.OBMol
         visited_bonds =set()
         start_atom = obmol.GetFirstAtom()
-        return find_eulerian(obmol, start_atom, visited_bonds)
+        return_val =find_eulerian(obmol, start_atom, visited_bonds)
+    mol.addh()
+    return return_val;
              
 
 def find_eulerian(mol, starting_atom, visited_bonds):
